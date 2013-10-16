@@ -1,0 +1,33 @@
+#
+# To setup git alias:
+#    copy this file to your home dir.
+#
+[user]
+	name = dummy
+	email = dummy@server.fake
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[alias]
+	st = status -sb
+	sm = submodule
+	ls = ls-files --stage
+	ci = commit
+	cl = clean
+	br = branch -a
+	co = checkout
+	df = diff
+	ready = rebase -i @{u}
+	logp = log -p
+	logf = log --first-parent
+	standup = log --since yesterday --author ssong
+	purr = pull --rebase
+	rup = remote update --prune
+	mg = merge --ff-only
+	pl = pull --ff-only
+[page]
+        diff =
