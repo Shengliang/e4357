@@ -1,0 +1,23 @@
+mkdir ucsc
+cd ucsc
+git clone https://github.com/Shengliang/e4357.git
+cd e4357/
+tree
+make
+make clean
+cd hw1
+cp .gitconfig ~
+vi hw1_lib.c 
+make
+#test
+make clean
+git diff
+gitk
+git remote -v
+git br -av
+git status
+git add hw1/.gitconfig
+git status
+git ci -a -m 'hw1/.gitconfig' 
+git push origin master:master
+(type your login; then your password)
