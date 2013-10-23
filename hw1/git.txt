@@ -19,5 +19,11 @@ git status
 git add hw1/.gitconfig
 git status
 git ci -a -m 'hw1/.gitconfig' 
+#view existing remotes
+git remote -v
+# change the 'origin' remote's URL
+git remote set-url origin https://github.com/your_name/e4357.git
+#view new remotes
+git remote -v
 git push origin master:master
 (type your login; then your password)
