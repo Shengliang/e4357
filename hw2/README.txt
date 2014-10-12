@@ -1,3 +1,6 @@
+Total Hours Spent: 1.5/1.5
+		   Actual/Expect
+
 4357 Embedded Firmware Essentials
 - Program Assignment #2
 
@@ -11,3 +14,9 @@
    b.	Exporting to GCC ARM Embedded 
 
    Note: Right Click your program, then select "export ..."
+
+2. binwalk, objdump, nm to Analysis binaries files
+   http://binwalk.org/
+
+3. Optional: git clone https://github.com/mbedmicro/mbed
+   

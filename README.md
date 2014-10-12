@@ -1,4 +1,4 @@
-e4357
-=====
+e4357: Embedded Firmware Essentials
+====================================
 
-e4357
+- Updated Fall 2014
