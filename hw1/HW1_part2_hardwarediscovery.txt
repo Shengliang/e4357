@@ -1,0 +1,30 @@
+Total time: about 1 hour
+
+Took apart a TI-89 calculator, purchased in 2002 or 2003
+	(my first and only graphing calculator!)
+
+Note that all hardware devices mention low power consumption--important for a calculator
+
+Sharp LH28F160S3T-L10
+16MB flash chip, organized in 2MB chunks (32 separate 64K pages)
+	uses the flash Scalable Command Set (SCS), and Common Flash Interface (CFI)
+	looks like parallel data in/out (no SPI, etc.)
+
+Cypress CY62128VLL-70ZC (there were 2 of these)
+SRAM, 1Mbit 70 ns, parallel interface, 128K 8-bit words
+
+Motorola MC68SEC000PB16
+	Part of the MC68000 family
+	low-power HCMOS technology: 0.5uA standby, 15.0mA at 3.3V
+	not sure about clock frequency
+	32-bit architecture
+	statically selectable 8- or 16-bit data bus
+	sixteen 32-bit data and address registers
+	16 Mbyte direct addressing range
+	6 instruction types
+	operations on 5 main data types
+	memory-mapped I/O
+	14 addressing modes
+
+Texas Instruments chip: TI REF 200C040F001
+	Couldn't find any info on this chip
