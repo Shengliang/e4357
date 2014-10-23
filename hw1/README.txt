@@ -1,50 +1,80 @@
-Total Hours Spent: 1.5/1.5
-		   Actual/Expect
+Part 1:
 
-Homework#1:
+/*
 
-Part I: Software (keep within 30 min)
-- Write a c function 
-   ex: 
+-------- 4k alignment--------
+Expecte time :30 mints
+Actual time: 90 mints
 
-   void *memcpy(void *dest, const void *src, size_t n);
-        
-   void *malloc(size_t size, size_t alignment_size);
-   void free(void *ptr, size_t alignment_size);
+Description: If given data is 4K aligned then provide the memory allocation
+for the data with 4K alignment of address.
 
-   /*
-    r = M * r 
-         where M is nxn matrix, r is nx1 vector
-    */
-    void next_rank(double *m, /*input */
-                          double *r, /*input and output */
-                          int n);
-   
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define FOURKB 4096
+
+void *my_malloc(size_t size, size_t Alignment);
+
+int main(void){
+
+  size_t data_size;
+  void *ptd;
+  printf(" Please enter size of data to allocate memory or \"Q\" to quit: \n");
+  
+  while (scanf("%u",&data_size)){
+    if(data_size%FOURKB != 0){
+      printf(" Data is not aligned \n");
+    }
+    else {
+      ptd = my_malloc(data_size, FOURKB);
+      printf("allocated address for the data with 4K alignment is: %u \n",(unsigned int) ptd);
+    }
+    printf(" Please enter size of data to allocate memory or \"Q\" to quit: \n");
+  }//while
+
+} //main
+
+void *my_malloc(size_t size, size_t Alignment){
+
+  void *ptd;
+  unsigned int temp_address;
+  ptd = malloc(size+Alignment);
+  printf("Address of the pointer before the alignment: %u \n", (unsigned int)ptd);
+  temp_address = (unsigned int)ptd % Alignment;
+  if (temp_address==0)
+    return (void *)ptd;
+  else
+    return (void *)(((unsigned int)ptd)+(Alignment-temp_address));
+}
+
+
+
+
 
 Part II: Hardware (discovery keep within 1 hr)
-Here is one example:
 
-http://wiki.openwrt.org/toh/d-link/dir-600
+Expected/actual -- 60 mints/ 60 mints
 
-http://wiki.openwrt.org/_media/toh/d-link/ar72xx_usb_mod_solder_points.jpg
+Device:  Netgear Wireless –G router
+Model no:  WGR614 V9
+Serial No: 1SV89A72228AD
+PCB No: U12H094T00 LF
 
-1. Walk around the house
-    - find an unused device with a micro controller inside 
-       ex: laptop/desktop/router/modem
+Component 1: Broadcom chip       Product ID: BCM5354KFBG
+http://pdf1.alldatasheet.net/datasheet-pdf/view/175111/BOARDCOM/BCM5354.html
 
-2. open it
-3. search for major components
-    ex: CPU (mips, arm, or x86)
-             search datasheet online
-              clock frequency
-              Data cache size?
-              Instruction cache size?
-              L1 cache size?
-              L2 cache size?
+Component 2: ISSI 		Product ID: IC42S16400F-7TL, XA796100W 0930 -- SYNCHRONOUS DYNAMIC RAM 
+http://datasheet.octopart.com/IS42S16400F-6TL-ISSI-datasheet-14189613.pdf
 
-    ex: memory (NOR flash? SPI Interface Flash?)
-    ex: RS232 pins (power, ground, tx, rx)
-    ex: DDR memory if any
-          clk frequency
+Component 3:  74L VCO4AD
 
-4. links to datasheet if found in the web
+Component 4: MX -12G   25L1605DM2I –Serial flash memory 
+http://www.datasheetarchive.com/dl/Datasheet-023/DSA00412104.pdf
+
+Component 5: 3 Inductors   0936 –HN2018CG, 0934 HN1618CG
+
+Component 6:  JM56141 – K001-4F  -- Modular  Jack Connector 
+http://www.datasheets360.com/pdf/-8257758881768691129
