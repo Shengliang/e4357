@@ -1,0 +1,55 @@
+/*
+
+-------- 4k alignment--------
+Expecte time :30 mints
+Actual time: 90 mints
+
+Description: If given data is 4K aligned then provide the memory allocation
+for the data with 4K alignment of address.
+
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define FOURKB 4096
+
+void *my_malloc(size_t size, size_t Alignment);
+
+int main(void){
+
+  size_t data_size;
+  void *ptd;
+  printf(" Please enter size of data to allocate memory or \"Q\" to quit: \n");
+  
+  while (scanf("%u",&data_size)){
+    if(data_size%FOURKB != 0){
+      printf(" Data is not aligned \n");
+    }
+    else {
+      ptd = my_malloc(data_size, FOURKB);
+      printf("allocated address for the data with 4K alignment is: %u \n",(unsigned int) ptd);
+    }
+    printf(" Please enter size of data to allocate memory or \"Q\" to quit: \n");
+  }//while
+
+} //main
+
+void *my_malloc(size_t size, size_t Alignment){
+
+  void *ptd;
+  unsigned int temp_address;
+  ptd = malloc(size+Alignment);
+  printf("Address of the pointer before the alignment: %u \n", (unsigned int)ptd);
+  temp_address = (unsigned int)ptd % Alignment;
+  if (temp_address==0)
+    return (void *)ptd;
+  else
+    return (void *)(((unsigned int)ptd)+(Alignment-temp_address));
+}
+
+
+      
+
+      
+
