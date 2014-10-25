@@ -1,0 +1,41 @@
+BEGIN
+--------------------------------------------------------------------
+1. What is the _mask value for LED1? 
+   What is the address of FIOSET?
+
+
+
+
+
+--------------------------------------------------------------------
+2. What is the RS232 Frame?
+
+
+
+
+
+--------------------------------------------------------------------
+3. Explain the start and stop conditions of i2c?
+
+
+
+
+
+
+--------------------------------------------------------------------
+4. Is the i2c acknowledge SDA LOW or SDA HIGH?
+
+
+
+
+
+
+--------------------------------------------------------------------
+5. Tell me about the DDR3 write leveling Concept in one sentence.  
+   (ref: slides)
+
+
+
+
+
+END
