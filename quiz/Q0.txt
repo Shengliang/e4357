@@ -1,0 +1,18 @@
+
+1. Search: "firmware" at Google
+   https://www.google.com/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q=firmware
+
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+. . . 
+
+2. Search results are returned within 0.36 seconds.
+
+What is happening in the background?
+
