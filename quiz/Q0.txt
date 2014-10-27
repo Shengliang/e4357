@@ -2,15 +2,27 @@
 1. Search: "firmware" at Google
    https://www.google.com/search?sourceid=chrome-psyapi2&ion=1&espv=2&ie=UTF-8&q=firmware
 
-. . . 
-. . . 
-. . . 
-. . . 
-. . . 
-. . . 
-. . . 
-. . . 
-. . . 
+Embedded Fundamentals (Oct 20, 2014)
+
+Exercise
+What happens when you type a keyword in Google browser?
+
+keyboard
+USB or PS2 interface to Northbridge chipset
+
+interrupt to processor
+look in hard drive - is the information cached?
+through PCIe bus
+if no, ethernet or wifi network card
+if ethernet, goes out through ethernet cable
+if wifi - to wifi router
+modem - to adsl or cable or access router or switch
+ISP
+backbone (SONET or ?)
+DNS server - maybe information is cached here…
+Human may power-cycle the data center
+Google server - get bundled in packets 
+Internal google network
 
 2. Search results are returned within 0.36 seconds.
 
