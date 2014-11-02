@@ -91,6 +91,20 @@ void print(void *hval, int len)
         printf("\n");
 }
 
+#if 0
+/*
+ * Compare k,s that are NULL terminated string
+ */
+int mystrcmp(const char *k, const char *s)
+{
+   int d = 0;
+
+   while ( (*k || *s) && 0 == (d = *k++ - *s++) );
+
+   return d;
+}
+#endif
+
 /*
  * HMAC strcmp
  *    - finished in about 1.3 second for any string inputs
