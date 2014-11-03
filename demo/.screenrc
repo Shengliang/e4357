@@ -1,0 +1,9 @@
+startup_message off
+chdir
+autodetach on
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+screen -t vim     1
+screen -t cscope  2
+screen -t make    3
+screen /dev/tty.usbmodem14222 115200
