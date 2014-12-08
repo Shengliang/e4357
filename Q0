@@ -1,0 +1,19 @@
+1.	browser checks cache; if requested object is in cache and is fresh, skip to #9
+2.	browser asks OS for server's IP address
+3.	OS makes a DNS lookup and replies the IP address to the browser
+4.	browser opens a TCP connection to server
+5.	browser sends the HTTP request through TCP connection
+
+	Once Google server recieves the request this is what happens in the background :
+	There are 60 trilion individual pages, search engine navigates the web by crawling, 		means we follow the link from page to page, sort the pages by their contents and 	        other factors, and then we keep track of it all in index format.(100 milion GB         indexing).
+	Google define the algorithym and formulas and write programs to deliver the best 	        results	possible.
+	As you search algorithym gets to work looking for clues to better understand what 		you mean.based on these clues we pull the relevant document from the index, we then   	rank the results based on freshness and user contexts.
+
+6.	browser receives HTTP response and may close the TCP connection, or reuse it for 		another request
+7.	browser checks if the response is a redirect (3xx result status codes), 		authorization request (401), error (4xx and 5xx), etc.; these are handled 		differently from normal responses (2xx)
+8.	if cacheable, response is stored in cache
+9.	browser decodes response (e.g. if it's gzipped)
+10.	browser determines what to do with response (e.g. is it a HTML page, is it an image, 	is it a sound clip?)
+11.	browser renders response, or offers a download dialog for unrecognized types
+
+
