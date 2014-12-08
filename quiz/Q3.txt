@@ -3,39 +3,37 @@ BEGIN
 1. What is the _mask value for LED1? 
    What is the address of FIOSET?
 
+LED1 is connected to P1.18 according to the schematic, the mask should be 0x40000  
 
-
-
+The FIOSET addresses are:
+FIO0SET - 0x2009C018
+FIO1SET - 0x2009C038
+FIO1SET - 0x2009C058
+FIO3SET - 0x2009C078
+FIO4SET - 0x2009C098
 
 --------------------------------------------------------------------
 2. What is the RS232 Frame?
 
-
-
-
+1 start bit, 8 data bits, 1 parity bit, 1 stop bit
 
 --------------------------------------------------------------------
 3. Explain the start and stop conditions of i2c?
 
-
-
-
-
+start condition happens at falling edge on SDA and SCL is high.
+stop condition happens at rising edge on SDA and SCL is high.
 
 --------------------------------------------------------------------
 4. Is the i2c acknowledge SDA LOW or SDA HIGH?
 
-
-
-
+SDA Low
 
 
 --------------------------------------------------------------------
 5. Tell me about the DDR3 write leveling Concept in one sentence.  
    (ref: slides)
 
-
-
+Dual data rate memory allows faster writing cycle by using both the rising and falling edge of the clock.
 
 
 END
