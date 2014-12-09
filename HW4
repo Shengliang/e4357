@@ -1,0 +1,19 @@
+********************************************************************************************************
+Madhuri Kotagiri
+HW#4
+Time spent - 3hr
+********************************************************************************************************
+
+I worked on this homework with my classmate Gada Badeer, we studied chapter 7 on Serial communication.
+We connected 2 mbed boards according to figure 7.13 and then we programmed example 7.9 and flashed it into the mbed boards.
+
+We learned following:
+
+From the SW side the functions async_port.putc() and async_port.getc() are used for transmitting and receiving data to and from the mbed boards.
+
+
+On the HW side: Tx and Rx are used to send/receive data serially to and from the other mbed board.
+
+Configurations: pins 5 and 6 as input for the two switches and the pins 25 and 26 for output to drive the LEDs 
+
+As expected we were able to  control the LEDs from the mbed board by turning on/off the switches from the other mbed board.
