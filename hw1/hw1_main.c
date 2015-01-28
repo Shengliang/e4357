@@ -7,7 +7,7 @@
 
 int main(int argc, char* argv[])
 {
-   uint16_t b, g;
+   uint32_t b, g;
    if (argc != 3) {
      printf("Usage: %s b binary_input\n"
             "       %s g gray_input\n", argv[0], argv[0]);
