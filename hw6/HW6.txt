@@ -1,0 +1,173 @@
+#ifndef __CIRCULAR_BUFFER
+#define __CIRCULAR_BUFFER
+
+/* Implement a circularbuffer library with the following API interface */
+
+/**< Circular Buffer Types */
+typedef unsigned char INT8U;
+typedef INT8U KeyType ;
+typedef struct {  
+    INT8U writePointer ; /**< write pointer */  
+    INT8U readPointer ;  /**< read pointer */  
+    INT8U size;         /**< size of circular buffer */
+    INT8U mask;         /**< bit Mask of circular buffer size*/   
+    KeyType keys[0];    /**< Element of ciruclar buffer */
+} CircularBuffer ; 
+
+inline int CircularBufferIsFull(CircularBuffer* que)
+{ }
+inline int CircularBufferIsEmpty(CircularBuffer* que)
+{ }
+inline int CircularBufferEnque(CircularBuffer* que, KeyType k)
+{ }
+inline int CircularBufferDeque(CircularBuffer* que, KeyType* pK)
+{ }
+inline int CircularBufferPrint(CircularBuffer* que)
+{ }
+
+#endif
+
+
+********************************************************************************************************
+Gada Badeer
+HW#6 - Circular Buffer
+Time spent - 4hr
+********************************************************************************************************
+
+Implementation code:
+---------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
+
+#ifndef __CIRCULAR_BUFFER
+#define __CIRCULAR_BUFFER
+
+#define BUFFER_SIZE    8 
+#define BUFFER_MASK  0x7 
+#define NUM_OF_ELEMS   (BUFFER_SIZE-1)
+
+
+/* Implement a circularbuffer library with the following API interface */
+
+/**< Circular Buffer Types */
+typedef unsigned char INT8U;
+typedef INT8U KeyType ;
+typedef struct {  
+    INT8U writePointer ; /**< write pointer */  
+    INT8U readPointer ;  /**< read pointer */  
+    INT8U size;         /**< size of circular buffer */
+    INT8U mask;         /**< bit Mask of circular buffer size*/   
+    KeyType keys[0];    /**< Element of ciruclar buffer */
+} CircularBuffer ; 
+
+inline void CircularBufferInit(CircularBuffer **que, int size) {
+        int sz = size*sizeof(KeyType)+sizeof(CircularBuffer);
+       *que = (CircularBuffer*) malloc(sz); 
+
+       (*que)->size  = size + 1; /* include empty keys */
+       (*que)->readPointer = 0;
+       (*que)->writePointer   = 0;
+// que->keys = 0;
+}
+
+inline int CircularBufferIsFull(CircularBuffer* que){
+    return (que->writePointer + 1) % que->size == que->readPointer;
+}
+
+inline int CircularBufferIsEmpty(CircularBuffer* que){
+    return que->writePointer == que->readPointer;
+}
+
+inline int CircularBufferEnque(CircularBuffer* que, KeyType k){
+        int isFull = CircularBufferIsFull(que);
+        if(!isFull) 
+        {
+        que->keys[que->writePointer] = k;
+        que->writePointer = (que->writePointer + 1) % que->size;
+        }
+        return isFull;   
+ }
+
+inline int CircularBufferDeque(CircularBuffer* que, KeyType* pK){
+        int isEmpty =  CircularBufferIsEmpty(que);
+        if(!isEmpty) 
+        {
+        *pK = que->keys[que->readPointer];
+        que->readPointer = (que->readPointer + 1) % que->size;
+        }
+        return isEmpty;
+}
+
+inline int CircularBufferPrint(CircularBuffer* que){
+        int i=0;
+        int isEmpty =  CircularBufferIsEmpty(que);
+        int isFull  =  CircularBufferIsFull(que);
+        printf("\n==Q: w:%d r:%d f:%d e:%d\n", 
+            que->writePointer, que->readPointer,  isFull, isEmpty);
+        for(i=0; i< que->size; i++)
+        {
+           printf("%d ", que->keys[i]);
+        }
+        printf("\n");
+        return(isEmpty);
+}
+int main(int argc, char *argv[])
+{
+        CircularBuffer* que;
+        KeyType a = 101;
+        int isEmpty, i;
+
+        CircularBufferInit(&que, BUFFER_SIZE);
+        CircularBufferPrint(que);
+
+        for(i=1; i<=3; i++)
+        {  
+            a=10*i;
+            printf("\n\n===\nTest: Insert %d-%d\n", a, a+NUM_OF_ELEMS-1);
+            while(! CircularBufferEnque(que, a++));
+
+            //CircularBufferPrint(que);
+            printf("\nRX%d:", i);
+            a=0;
+            isEmpty = CircularBufferDeque(que, &a); 
+            while (!isEmpty)
+            {
+                printf("%02d ", a);
+                a=0;
+                isEmpty = CircularBufferDeque(que, &a); 
+            }
+            //CircularBufferPrint(que);
+        }
+
+        free(que);
+        return 0;
+}
+#endif
+
+
+
+Output:
+-----------
+gfaour@ubuntu:~/HW6$ ./a.out
+
+==Q: w:0 r:0 f:0 e:1
+0 0 0 0 0 0 0 0 241 
+
+
+===
+Test: Insert 10-16
+
+RX1:10 11 12 13 14 15 16 17 
+
+===
+Test: Insert 20-26
+
+RX2:20 21 22 23 24 25 26 27 
+
+===
+Test: Insert 30-36
+
+RX3:30 31 32 33 34 35 36 37 gfaour@ubuntu:~/HW6$

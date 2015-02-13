@@ -4,33 +4,43 @@ Q1: Implement the following inline functions:
 inline int CircularBufferIsFull(CircularBuffer* que) 
 inline int CircularBufferIsEmpty(CircularBuffer* que) 
 
+inline int CircularBufferIsFull(CircularBuffer* que){
+    return (que->writePointer + 1) % que->size == que->readPointer;
+}
 
+inline int CircularBufferIsEmpty(CircularBuffer* que){
+    return que->writePointer == que->readPointer;
+}
 
 
 --------------------------------------------------------------------
 Q2: How to compute "Interrupt Latency"?
 
+The Interrupt Latency is the time from when an Interrupt is triggered until the Interrupt process
+start. it can be calculated as following:
 
+Interrupt Latency = S+I
+
+S: Time to start the interrupt handler.
+I: The interrupt handler time.(time for saving the CPU register contents and find out the cause of interrup and set the interrupt mask) 
 
 --------------------------------------------------------------------
 Q3: Serial pc(USBTX, USBRX); // tx, rx 
     What API (function) do you use to change the baud rate?
-
-
+pc.baud()
 
 
 --------------------------------------------------------------------
 Q4: How many bit(s) does TDO have? Is TDO an input or output type? (Ref: JTAG Pins) 
 
-
-
+TDO - Test Data Out - 1 bit.
 
 
 
 --------------------------------------------------------------------
 Q5:
-What is the address of ledArr[0]? 
-What is the address of ch? 
+What is the address of ledArr[0]? LED1: 0x2009C038
+What is the address of ch? 0x00
 
 
 /* 

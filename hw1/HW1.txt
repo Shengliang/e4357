@@ -1,0 +1,116 @@
+Total Hours Spent: 1.5/1.5
+		   Actual/Expect
+
+Homework#1:
+
+Part I: C Programming (keep within 30 min)
+- Implement one c function
+   ex:
+   uint16_t gray_to_binary(uint16_t gray);
+   uint16_t binary_to_gray(uint16_t binary);
+   void *memcpy(void *dest, const void *src, size_t n);
+   void *malloc(size_t size, size_t alignment_size);
+   void free(void *ptr, size_t alignment_size);
+
+   /*
+    * r' = m * r
+    * where m is nxn matrix, r is nx1 vector
+    * @param m, a double pointer to a flat 2-dim array
+    * { r0c0, r0c1, ..., r0c[n-1],
+    *   r1c0, r1c1, ..., r1c[n-1],
+    *    ...
+    *   r[n-1]c0, r[n-1]c1, ..., r[n-1]c[n-1]
+    * }
+    * @param r, a double pointer to a 1-dim array
+    */
+    void next_rank(double *m, /*input */
+                   double *r, /*input and output */
+                   int n);
+
+Part II: Hardware (discovery keep within 1 hr)
+Here is one example:
+http://wiki.openwrt.org/toh/d-link/dir-600
+http://wiki.openwrt.org/_media/toh/d-link/ar72xx_usb_mod_solder_points.jpg
+
+1. find a device with a micro controller
+      (that you bought before)
+
+2. find hardware datasheets of major components in the device
+    search for major components
+    ex: CPU (mips, arm, or x86)
+	|- hardware datasheet
+	|- clock frequency
+	|- power source, voltage and current
+
+    ex: memory (NOR flash? SPI Interface Flash?)
+    ex: RS232 pins (power, ground, tx, rx)
+    ex: DDR memory if any
+          clk frequency
+
+3. find a firmware SDKs if any
+
+4. find prices info
+     |- price at the time you bought
+     |- price on today's market
+
+5. write a short summary includes links to datasheets and SDKs if any
+
+********************************************************************************************************
+Gada Badeer
+HW#1 - Part II: Hardware
+Time spent - 1hr
+********************************************************************************************************
+
+Hardware: My own Dell Laptop:
+
+Processor: Intel® Core™ i5-2540M Processor	
+Processor Family Data Sheet: http://www.intel.com/content/dam/www/public/us/en/documents/datasheets/core-m-processor-family-datasheet-vol-1.pdf
+Specification: http://ark.intel.com/products/50072/Intel-Core-i5-2540M-Processor-3M-Cache-up-to-3_30-GHz
+Processor Base Frequency: 2.6 GHz
+Max Turbo Frequency: 3.3 GHz
+L2 cache: 2 × 256 KB
+L3 cache: 3 MB
+Architecture: Sandy Bridge microarchitecture
+Instruction Set: 64-bit 
+Thermal Design Power: 35 W
+I/O bus: DMI 2.0, 5GT/s	
+Memory Types: DDR3-1066/1333
+# of Memory Channels: 2 
+PCI Express Revision: 2.0 
+PCI Express Configurations: 1x16, 2x8, 1x8+2x4 
+Max # of PCI Express Lanes: 16 
+Released Date: February 2011
+Release Price: $266
+
+****************************************************************************************************
+Gada Badeer
+HW#1 - PartI: Software
+Time spect - 30 minutes
+****************************************************************************************************
+
+#include<stdio.h>
+int check_prime(int num);
+int main(){
+   int n1,n2,i,flag;
+   printf("Enter two numbers(intervals): ");
+   scanf("%d %d",&n1, &n2);
+   printf("Prime numbers between %d and %d are: ", n1, n2);
+   for(i=n1+1;i<n2;++i)
+   {
+      flag=check_prime(i);
+      if(flag==0)
+         printf("%d ",i);
+   }
+   return 0;
+}
+int check_prime(int num) /* User-defined function to check prime number*/
+{
+   int j,flag=0;
+   for(j=2;j<=num/2;++j){
+        if(num%j==0){
+            flag=1;
+            break;
+        }
+   }
+   return flag;
+}

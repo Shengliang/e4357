@@ -6,16 +6,19 @@ Q1: Is there any compile error with the following code (if any)?
 	3[Arr] = 7; 
  
 Explain:
+There is no compile error.
 
+expression a[i] is semantically equivalent to *(a+i), which in turn is equivalent to *(i+a),
+the expression can also be written as i[a]
 
 
 
 --------------------------------------------------------------------
 Q2: What is the difference between the following 3 statements? 
 
-const int * px; 
-int const * px; 
-int * const px; 
+const int * px; -- px is a variable pointer to a constant integer
+int const * px; -- px is pointing to a constant integer which is same as above
+int * const px; -- px is constant or fixed pointer to a value that can not be changed which is of type integer
 
 Is there any compile error for the following cases?
 case1: 
@@ -35,16 +38,9 @@ px = & x;
 
 Explain:
 
+Case1 and Case2 had no compiling issues
 
-
-
-
-
-
-
-
-
-
+Case3: has compilation error as " trying to assign to read only variable, as pc is of type constant
 
 --------------------------------------------------------------------
 Q3: Write a function to set or clear ith bit of a 32-bit register. 
@@ -53,7 +49,7 @@ void reg_set(volatile unsigned int * pReg, int ith)
 { 
 
 
-
+pReg-> ith = 1;
 
 
 } 
@@ -62,7 +58,7 @@ void reg_clear(volatile unsigned int * pReg, int ith)
 { 
 
 
-
+pReg -> ith = 0;
 
 
 } 
@@ -73,10 +69,12 @@ void reg_clear(volatile unsigned int * pReg, int ith)
 Q4: Write a swap function in C.
 void swap(unsigned int * px, unsigned int *py) { 
 
+int temp;
 
 
-
-
+    temp = *px;
+   *px   = *py;
+   *py   = temp;
 
 
 } 
@@ -90,10 +88,7 @@ unsigned int a3 = (unsigned int) &Arr[3];
 printf(“%d\n”, a3 – a0); 
 
 
-
-
-
-
+ 4 bytes for each int, 3 integers in between hence 12
 
 
 

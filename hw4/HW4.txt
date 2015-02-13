@@ -1,0 +1,30 @@
+
+4357 Embedded Firmware Essentials
+Program Assignment #3 10 points
+Read Chapter 7
+
+7.9 Asynchronous Serial Data Communication
+
+Program Example 7.9 Bidirectional Data transfer between two mbed UARTs.
+
+Work with a classmate as a team for this Program Assignment.  
+Connect two mbeds as show in Figure 7.13, and compile and download Program Example 7.9 into each.  You should find that the switches from one mbed control the LEDs from the other, and vice versa.
+********************************************************************************************************
+Gada Badeer
+HW#4
+Time spent - 3hr
+********************************************************************************************************
+
+I worked on this homework with my classmate Madhuri Kotagiri, we studied chapter 7 on Serial communication.
+We connected 2 mbed boards according to figure 7.13 and then we programmed example 7.9 and flashed it into the mbed boards.
+
+We learned following:
+
+From the SW side the functions async_port.putc() and async_port.getc() are used for transmitting and receiving data to and from the mbed boards.
+
+
+On the HW side: Tx and Rx are used to send/receive data serially to and from the other mbed board.
+
+Configurations: pins 5 and 6 as input for the two switches and the pins 25 and 26 for output to drive the LEDs 
+
+As expected we were able to  control the LEDs from the mbed board by turning on/off the switches from the other mbed board.
