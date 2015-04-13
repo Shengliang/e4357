@@ -1,0 +1,49 @@
+
+LPC1768.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <g_pfnVectors>:
+   0:	00 20 00 10 c9 00 00 00 00 00 00 00 00 00 00 00     . ..............
+  10:	c5 00 00 00 c5 00 00 00 c5 00 00 00 00 00 00 00     ................
+	...
+  2c:	c5 00 00 00 c5 00 00 00 00 00 00 00 c5 00 00 00     ................
+  3c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  4c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  5c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  6c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  7c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  8c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  9c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  ac:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  bc:	c5 00 00 00 c5 00 00 00                             ........
+
+000000c4 <Default_Handler>:
+  c4:	e7fe      	b.n	c4 <Default_Handler>
+  c6:	bf00      	nop
+
+000000c8 <Reset_Handler>:
+  c8:	4668      	mov	r0, sp
+  ca:	f020 0107 	bic.w	r1, r0, #7
+  ce:	468d      	mov	sp, r1
+  d0:	b501      	push	{r0, lr}
+  d2:	f000 f80d 	bl	f0 <main>
+  d6:	e8bd 4001 	ldmia.w	sp!, {r0, lr}
+  da:	4685      	mov	sp, r0
+  dc:	4770      	bx	lr
+  de:	bf00      	nop
+
+000000e0 <toggle_gpio>:
+  e0:	4a02      	ldr	r2, [pc, #8]	; (ec <toggle_gpio+0xc>)
+  e2:	2320      	movs	r3, #32
+  e4:	7013      	strb	r3, [r2, #0]
+  e6:	7613      	strb	r3, [r2, #24]
+  e8:	7713      	strb	r3, [r2, #28]
+  ea:	e7fc      	b.n	e6 <toggle_gpio+0x6>
+  ec:	2009c000 	.word	0x2009c000
+
+000000f0 <main>:
+  f0:	b508      	push	{r3, lr}
+  f2:	f7ff fff5 	bl	e0 <toggle_gpio>
+  f6:	bf00      	nop

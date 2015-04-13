@@ -1,0 +1,57 @@
+
+LPC1768.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <g_pfnVectors>:
+   0:	00 20 00 10 c5 00 00 00 00 00 00 00 00 00 00 00     . ..............
+  10:	dd 00 00 00 dd 00 00 00 dd 00 00 00 00 00 00 00     ................
+	...
+  2c:	dd 00 00 00 dd 00 00 00 00 00 00 00 dd 00 00 00     ................
+  3c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  4c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  5c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  6c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  7c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  8c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  9c:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  ac:	dd 00 00 00 dd 00 00 00 dd 00 00 00 dd 00 00 00     ................
+  bc:	dd 00 00 00 dd 00 00 00                             ........
+
+000000c4 <Reset_Handler>:
+  c4:	4668      	mov	r0, sp
+  c6:	f020 0107 	bic.w	r1, r0, #7
+  ca:	468d      	mov	sp, r1
+  cc:	b501      	push	{r0, lr}
+  ce:	f000 f815 	bl	fc <main>
+  d2:	e8bd 4001 	ldmia.w	sp!, {r0, lr}
+  d6:	4685      	mov	sp, r0
+  d8:	4770      	bx	lr
+  da:	bf00      	nop
+
+000000dc <Default_Handler>:
+  dc:	e7fe      	b.n	dc <Default_Handler>
+  de:	bf00      	nop
+
+000000e0 <toggle_gpio>:
+  e0:	b410      	push	{r4}
+  e2:	2420      	movs	r4, #32
+  e4:	4b04      	ldr	r3, [pc, #16]	; (f8 <toggle_gpio+0x18>)
+  e6:	4622      	mov	r2, r4
+  e8:	701a      	strb	r2, [r3, #0]
+  ea:	4b03      	ldr	r3, [pc, #12]	; (f8 <toggle_gpio+0x18>)
+  ec:	4622      	mov	r2, r4
+  ee:	761a      	strb	r2, [r3, #24]
+  f0:	4b01      	ldr	r3, [pc, #4]	; (f8 <toggle_gpio+0x18>)
+  f2:	4622      	mov	r2, r4
+  f4:	771a      	strb	r2, [r3, #28]
+  f6:	e7f8      	b.n	ea <toggle_gpio+0xa>
+  f8:	2009c000 	.word	0x2009c000
+
+000000fc <main>:
+  fc:	b508      	push	{r3, lr}
+  fe:	f7ff ffef 	bl	e0 <toggle_gpio>
+ 102:	2300      	movs	r3, #0
+ 104:	4618      	mov	r0, r3
+ 106:	bd08      	pop	{r3, pc}
