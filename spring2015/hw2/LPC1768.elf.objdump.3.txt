@@ -1,0 +1,113 @@
+
+LPC1768.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <g_pfnVectors>:
+   0:	00 24 00 10 c9 00 00 00 00 00 00 00 00 00 00 00     .$..............
+  10:	c5 00 00 00 c5 00 00 00 c5 00 00 00 00 00 00 00     ................
+	...
+  2c:	c5 00 00 00 c5 00 00 00 00 00 00 00 c5 00 00 00     ................
+  3c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  4c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  5c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  6c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  7c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  8c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  9c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  ac:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  bc:	c5 00 00 00 c5 00 00 00                             ........
+
+000000c4 <Default_Handler>:
+  c4:	e7fe      	b.n	c4 <Default_Handler>
+  c6:	bf00      	nop
+
+000000c8 <Reset_Handler>:
+  c8:	4668      	mov	r0, sp
+  ca:	f020 0107 	bic.w	r1, r0, #7
+  ce:	468d      	mov	sp, r1
+  d0:	b501      	push	{r0, lr}
+  d2:	f000 f805 	bl	e0 <main>
+  d6:	e8bd 4001 	ldmia.w	sp!, {r0, lr}
+  da:	4685      	mov	sp, r0
+  dc:	4770      	bx	lr
+  de:	bf00      	nop
+
+000000e0 <main>:
+  e0:	e92d 07f0 	stmdb	sp!, {r4, r5, r6, r7, r8, r9, sl}
+  e4:	4a31      	ldr	r2, [pc, #196]	; (1ac <main+0xcc>)
+  e6:	f44f 4340 	mov.w	r3, #49152	; 0xc000
+  ea:	f2c2 0309 	movt	r3, #8201	; 0x2009
+  ee:	f893 9014 	ldrb.w	r9, [r3, #20]
+  f2:	f202 3aff 	addw	sl, r2, #1023	; 0x3ff
+  f6:	f893 8014 	ldrb.w	r8, [r3, #20]
+  fa:	f102 0108 	add.w	r1, r2, #8
+  fe:	f893 c014 	ldrb.w	ip, [r3, #20]
+ 102:	7d1f      	ldrb	r7, [r3, #20]
+ 104:	7d1e      	ldrb	r6, [r3, #20]
+ 106:	7d1d      	ldrb	r5, [r3, #20]
+ 108:	7d1c      	ldrb	r4, [r3, #20]
+ 10a:	7d18      	ldrb	r0, [r3, #20]
+ 10c:	4551      	cmp	r1, sl
+ 10e:	f882 9000 	strb.w	r9, [r2]
+ 112:	f882 8001 	strb.w	r8, [r2, #1]
+ 116:	f882 c002 	strb.w	ip, [r2, #2]
+ 11a:	70d7      	strb	r7, [r2, #3]
+ 11c:	7116      	strb	r6, [r2, #4]
+ 11e:	7155      	strb	r5, [r2, #5]
+ 120:	7194      	strb	r4, [r2, #6]
+ 122:	71d0      	strb	r0, [r2, #7]
+ 124:	d23d      	bcs.n	1a2 <main+0xc2>
+ 126:	f893 9014 	ldrb.w	r9, [r3, #20]
+ 12a:	3210      	adds	r2, #16
+ 12c:	f893 8014 	ldrb.w	r8, [r3, #20]
+ 130:	f893 c014 	ldrb.w	ip, [r3, #20]
+ 134:	7d1f      	ldrb	r7, [r3, #20]
+ 136:	7d1e      	ldrb	r6, [r3, #20]
+ 138:	7d1d      	ldrb	r5, [r3, #20]
+ 13a:	7d1c      	ldrb	r4, [r3, #20]
+ 13c:	7d18      	ldrb	r0, [r3, #20]
+ 13e:	f881 9000 	strb.w	r9, [r1]
+ 142:	e023      	b.n	18c <main+0xac>
+ 144:	f893 8014 	ldrb.w	r8, [r3, #20]
+ 148:	f893 9014 	ldrb.w	r9, [r3, #20]
+ 14c:	7d1f      	ldrb	r7, [r3, #20]
+ 14e:	7d1e      	ldrb	r6, [r3, #20]
+ 150:	7d1d      	ldrb	r5, [r3, #20]
+ 152:	7d1c      	ldrb	r4, [r3, #20]
+ 154:	7d18      	ldrb	r0, [r3, #20]
+ 156:	7d19      	ldrb	r1, [r3, #20]
+ 158:	f882 8000 	strb.w	r8, [r2]
+ 15c:	71d1      	strb	r1, [r2, #7]
+ 15e:	f882 9001 	strb.w	r9, [r2, #1]
+ 162:	7097      	strb	r7, [r2, #2]
+ 164:	70d6      	strb	r6, [r2, #3]
+ 166:	7115      	strb	r5, [r2, #4]
+ 168:	7154      	strb	r4, [r2, #5]
+ 16a:	7190      	strb	r0, [r2, #6]
+ 16c:	f893 9014 	ldrb.w	r9, [r3, #20]
+ 170:	f102 0108 	add.w	r1, r2, #8
+ 174:	f893 8014 	ldrb.w	r8, [r3, #20]
+ 178:	f893 c014 	ldrb.w	ip, [r3, #20]
+ 17c:	7d1f      	ldrb	r7, [r3, #20]
+ 17e:	7d1e      	ldrb	r6, [r3, #20]
+ 180:	7d1d      	ldrb	r5, [r3, #20]
+ 182:	7d1c      	ldrb	r4, [r3, #20]
+ 184:	7d18      	ldrb	r0, [r3, #20]
+ 186:	f882 9008 	strb.w	r9, [r2, #8]
+ 18a:	3210      	adds	r2, #16
+ 18c:	4552      	cmp	r2, sl
+ 18e:	f881 8001 	strb.w	r8, [r1, #1]
+ 192:	f881 c002 	strb.w	ip, [r1, #2]
+ 196:	70cf      	strb	r7, [r1, #3]
+ 198:	710e      	strb	r6, [r1, #4]
+ 19a:	714d      	strb	r5, [r1, #5]
+ 19c:	718c      	strb	r4, [r1, #6]
+ 19e:	71c8      	strb	r0, [r1, #7]
+ 1a0:	d3d0      	bcc.n	144 <main+0x64>
+ 1a2:	2000      	movs	r0, #0
+ 1a4:	e8bd 07f0 	ldmia.w	sp!, {r4, r5, r6, r7, r8, r9, sl}
+ 1a8:	4770      	bx	lr
+ 1aa:	bf00      	nop
+ 1ac:	10000000 	.word	0x10000000

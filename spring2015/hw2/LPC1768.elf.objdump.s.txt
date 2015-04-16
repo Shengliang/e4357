@@ -1,0 +1,71 @@
+
+LPC1768.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <g_pfnVectors>:
+   0:	00 24 00 10 c7 00 00 00 00 00 00 00 00 00 00 00     .$..............
+  10:	c5 00 00 00 c5 00 00 00 c5 00 00 00 00 00 00 00     ................
+	...
+  2c:	c5 00 00 00 c5 00 00 00 00 00 00 00 c5 00 00 00     ................
+  3c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  4c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  5c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  6c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  7c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  8c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  9c:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  ac:	c5 00 00 00 c5 00 00 00 c5 00 00 00 c5 00 00 00     ................
+  bc:	c5 00 00 00 c5 00 00 00                             ........
+
+000000c4 <Default_Handler>:
+  c4:	e7fe      	b.n	c4 <Default_Handler>
+
+000000c6 <Reset_Handler>:
+  c6:	4668      	mov	r0, sp
+  c8:	f020 0107 	bic.w	r1, r0, #7
+  cc:	468d      	mov	sp, r1
+  ce:	b501      	push	{r0, lr}
+  d0:	f000 f81c 	bl	10c <main>
+  d4:	e8bd 4001 	ldmia.w	sp!, {r0, lr}
+  d8:	4685      	mov	sp, r0
+  da:	4770      	bx	lr
+
+000000dc <sample>:
+  dc:	b5f0      	push	{r4, r5, r6, r7, lr}
+  de:	4b0a      	ldr	r3, [pc, #40]	; (108 <sample+0x2c>)
+  e0:	f893 c014 	ldrb.w	ip, [r3, #20]
+  e4:	7d1f      	ldrb	r7, [r3, #20]
+  e6:	7d1e      	ldrb	r6, [r3, #20]
+  e8:	7d1d      	ldrb	r5, [r3, #20]
+  ea:	7d1c      	ldrb	r4, [r3, #20]
+  ec:	7d19      	ldrb	r1, [r3, #20]
+  ee:	7d1a      	ldrb	r2, [r3, #20]
+  f0:	7d1b      	ldrb	r3, [r3, #20]
+  f2:	f880 c000 	strb.w	ip, [r0]
+  f6:	7047      	strb	r7, [r0, #1]
+  f8:	7086      	strb	r6, [r0, #2]
+  fa:	70c5      	strb	r5, [r0, #3]
+  fc:	7104      	strb	r4, [r0, #4]
+  fe:	7141      	strb	r1, [r0, #5]
+ 100:	7182      	strb	r2, [r0, #6]
+ 102:	71c3      	strb	r3, [r0, #7]
+ 104:	bdf0      	pop	{r4, r5, r6, r7, pc}
+ 106:	bf00      	nop
+ 108:	2009c000 	.word	0x2009c000
+
+0000010c <main>:
+ 10c:	b510      	push	{r4, lr}
+ 10e:	4c05      	ldr	r4, [pc, #20]	; (124 <main+0x18>)
+ 110:	4620      	mov	r0, r4
+ 112:	f7ff ffe3 	bl	dc <sample>
+ 116:	4b04      	ldr	r3, [pc, #16]	; (128 <main+0x1c>)
+ 118:	3408      	adds	r4, #8
+ 11a:	429c      	cmp	r4, r3
+ 11c:	d3f8      	bcc.n	110 <main+0x4>
+ 11e:	2000      	movs	r0, #0
+ 120:	bd10      	pop	{r4, pc}
+ 122:	bf00      	nop
+ 124:	10000000 	.word	0x10000000
+ 128:	100003ff 	.word	0x100003ff
