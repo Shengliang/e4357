@@ -1,0 +1,398 @@
+
+Discarded input sections
+
+ .text          0x0000000000000000        0x0 main.o
+ .data          0x0000000000000000        0x0 main.o
+ .bss           0x0000000000000000        0x0 main.o
+ .data          0x0000000000000000        0x0 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ .bss           0x0000000000000000        0x0 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+VECTORS          0x0000000000000000 0x0000000000000400 xr
+FLASH_PROTECTION 0x0000000000000400 0x0000000000000010 xr
+FLASH            0x0000000000000410 0x00000000000ffbf0 xr
+RAM              0x000000001fff0198 0x000000000003fe68 xrw
+*default*        0x0000000000000000 0xffffffffffffffff
+
+Linker script and memory map
+
+LOAD main.o
+LOAD mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+
+.isr_vector     0x0000000000000000      0x1f0
+                0x0000000000000000                __vector_table = .
+ *(.vector_table)
+ .vector_table  0x0000000000000000      0x198 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x0000000000000000                __isr_vector
+ *(.text.Reset_Handler)
+ .text.Reset_Handler
+                0x0000000000000198       0x58 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x0000000000000198                Reset_Handler
+ *(.text.System_Init)
+                0x00000000000001f0                . = ALIGN (0x4)
+
+.flash_protect  0x0000000000000400       0x10
+ *(.kinetis_flash_config_field)
+ .kinetis_flash_config_field
+                0x0000000000000400       0x10 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x0000000000000410                . = ALIGN (0x4)
+
+.text           0x0000000000000410       0xf0
+ *(.text*)
+ .text.set_output
+                0x0000000000000410       0x40 main.o
+                0x0000000000000410                set_output
+ .text.turn_on_led1
+                0x0000000000000450       0x18 main.o
+                0x0000000000000450                turn_on_led1
+ .text.clr_led  0x0000000000000468       0x18 main.o
+                0x0000000000000468                clr_led
+ .text.SystemInit
+                0x0000000000000480        0x4 main.o
+                0x0000000000000480                SystemInit
+ .text._start   0x0000000000000484        0x8 main.o
+                0x0000000000000484                _start
+ .text.mysleep  0x000000000000048c       0x40 main.o
+                0x000000000000048c                mysleep
+ .text.main     0x00000000000004cc       0x20 main.o
+                0x00000000000004cc                main
+ .text          0x00000000000004ec       0x14 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x00000000000004ec                NMI_Handler
+                0x00000000000004ee                HardFault_Handler
+                0x00000000000004f0                MemManage_Handler
+                0x00000000000004f2                BusFault_Handler
+                0x00000000000004f4                UsageFault_Handler
+                0x00000000000004f6                SVC_Handler
+                0x00000000000004f8                DebugMon_Handler
+                0x00000000000004fa                PendSV_Handler
+                0x00000000000004fc                SysTick_Handler
+                0x00000000000004fe                CAN0_ORed_Message_buffer_IRQHandler
+                0x00000000000004fe                Watchdog_IRQHandler
+                0x00000000000004fe                CMP2_IRQHandler
+                0x00000000000004fe                ENET_Receive_IRQHandler
+                0x00000000000004fe                ENET_1588_Timer_IRQHandler
+                0x00000000000004fe                UART2_RX_TX_IRQHandler
+                0x00000000000004fe                SWI_IRQHandler
+                0x00000000000004fe                ADC0_IRQHandler
+                0x00000000000004fe                I2S0_Tx_IRQHandler
+                0x00000000000004fe                CMT_IRQHandler
+                0x00000000000004fe                UART4_RX_TX_IRQHandler
+                0x00000000000004fe                SPI1_IRQHandler
+                0x00000000000004fe                DefaultISR
+                0x00000000000004fe                DMA9_IRQHandler
+                0x00000000000004fe                DMA14_IRQHandler
+                0x00000000000004fe                CMP1_IRQHandler
+                0x00000000000004fe                Reserved71_IRQHandler
+                0x00000000000004fe                PORTD_IRQHandler
+                0x00000000000004fe                PORTB_IRQHandler
+                0x00000000000004fe                UART4_ERR_IRQHandler
+                0x00000000000004fe                ADC1_IRQHandler
+                0x00000000000004fe                I2C2_IRQHandler
+                0x00000000000004fe                PIT2_IRQHandler
+                0x00000000000004fe                I2S0_Rx_IRQHandler
+                0x00000000000004fe                LPTimer_IRQHandler
+                0x00000000000004fe                DMA5_IRQHandler
+                0x00000000000004fe                RTC_IRQHandler
+                0x00000000000004fe                PDB0_IRQHandler
+                0x00000000000004fe                FTM1_IRQHandler
+                0x00000000000004fe                UART5_RX_TX_IRQHandler
+                0x00000000000004fe                UART3_ERR_IRQHandler
+                0x00000000000004fe                PIT3_IRQHandler
+                0x00000000000004fe                SDHC_IRQHandler
+                0x00000000000004fe                RTC_Seconds_IRQHandler
+                0x00000000000004fe                MCG_IRQHandler
+                0x00000000000004fe                FTFE_IRQHandler
+                0x00000000000004fe                UART2_ERR_IRQHandler
+                0x00000000000004fe                DMA11_IRQHandler
+                0x00000000000004fe                UART5_ERR_IRQHandler
+                0x00000000000004fe                Read_Collision_IRQHandler
+                0x00000000000004fe                Default_Handler
+                0x00000000000004fe                DMA7_IRQHandler
+                0x00000000000004fe                ENET_Transmit_IRQHandler
+                0x00000000000004fe                USBDCD_IRQHandler
+                0x00000000000004fe                USB0_IRQHandler
+                0x00000000000004fe                LLW_IRQHandler
+                0x00000000000004fe                SPI2_IRQHandler
+                0x00000000000004fe                DMA13_IRQHandler
+                0x00000000000004fe                DMA3_IRQHandler
+                0x00000000000004fe                UART0_LON_IRQHandler
+                0x00000000000004fe                RNG_IRQHandler
+                0x00000000000004fe                DMA0_IRQHandler
+                0x00000000000004fe                DMA15_IRQHandler
+                0x00000000000004fe                DAC0_IRQHandler
+                0x00000000000004fe                CAN0_Error_IRQHandler
+                0x00000000000004fe                DMA4_IRQHandler
+                0x00000000000004fe                PIT1_IRQHandler
+                0x00000000000004fe                UART0_ERR_IRQHandler
+                0x00000000000004fe                DMA_Error_IRQHandler
+                0x00000000000004fe                LVD_LVW_IRQHandler
+                0x00000000000004fe                SPI0_IRQHandler
+                0x00000000000004fe                FTM0_IRQHandler
+                0x00000000000004fe                PORTA_IRQHandler
+                0x00000000000004fe                DAC1_IRQHandler
+                0x00000000000004fe                MCM_IRQHandler
+                0x00000000000004fe                DMA12_IRQHandler
+                0x00000000000004fe                CAN0_Bus_Off_IRQHandler
+                0x00000000000004fe                FTM3_IRQHandler
+                0x00000000000004fe                PORTE_IRQHandler
+                0x00000000000004fe                FTM2_IRQHandler
+                0x00000000000004fe                DMA8_IRQHandler
+                0x00000000000004fe                DMA10_IRQHandler
+                0x00000000000004fe                CAN0_Wake_Up_IRQHandler
+                0x00000000000004fe                UART1_ERR_IRQHandler
+                0x00000000000004fe                UART1_RX_TX_IRQHandler
+                0x00000000000004fe                CMP0_IRQHandler
+                0x00000000000004fe                PORTC_IRQHandler
+                0x00000000000004fe                DMA6_IRQHandler
+                0x00000000000004fe                CAN0_Rx_Warning_IRQHandler
+                0x00000000000004fe                DMA1_IRQHandler
+                0x00000000000004fe                I2C0_IRQHandler
+                0x00000000000004fe                UART3_RX_TX_IRQHandler
+                0x00000000000004fe                UART0_RX_TX_IRQHandler
+                0x00000000000004fe                I2C1_IRQHandler
+                0x00000000000004fe                DMA2_IRQHandler
+                0x00000000000004fe                ENET_Error_IRQHandler
+                0x00000000000004fe                CAN0_Tx_Warning_IRQHandler
+                0x00000000000004fe                PIT0_IRQHandler
+ *(.init)
+ *(.fini)
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ *(.eh_frame*)
+
+.glue_7         0x0000000000000500        0x0
+ .glue_7        0x0000000000000000        0x0 linker stubs
+
+.glue_7t        0x0000000000000500        0x0
+ .glue_7t       0x0000000000000000        0x0 linker stubs
+
+.vfp11_veneer   0x0000000000000500        0x0
+ .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+
+.v4_bx          0x0000000000000500        0x0
+ .v4_bx         0x0000000000000000        0x0 linker stubs
+
+.iplt           0x0000000000000500        0x0
+ .iplt          0x0000000000000000        0x0 main.o
+
+.rel.dyn        0x0000000000000500        0x0
+ .rel.iplt      0x0000000000000000        0x0 main.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x0000000000000500                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x0000000000000500                __exidx_end = .
+                0x0000000000000500                __etext = .
+
+.data           0x000000001fff0198        0x0 load address 0x0000000000000500
+                0x000000001fff0198                __data_start__ = .
+ *(vtable)
+ *(.data*)
+                0x000000001fff0198                . = ALIGN (0x4)
+                0x000000001fff0198                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x000000001fff0198                PROVIDE (__preinit_array_end, .)
+                0x000000001fff0198                . = ALIGN (0x4)
+                0x000000001fff0198                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+                0x000000001fff0198                PROVIDE (__init_array_end, .)
+                0x000000001fff0198                . = ALIGN (0x4)
+                0x000000001fff0198                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+                0x000000001fff0198                PROVIDE (__fini_array_end, .)
+                0x000000001fff0198                . = ALIGN (0x4)
+                0x000000001fff0198                __data_end__ = .
+
+.igot.plt       0x000000001fff0198        0x0
+ .igot.plt      0x0000000000000000        0x0 main.o
+
+.bss            0x000000001fff0198        0x0
+                0x000000001fff0198                __bss_start__ = .
+ *(.bss*)
+ *(COMMON)
+                0x000000001fff0198                __bss_end__ = .
+
+.heap           0x000000001fff0198      0x400
+                0x000000001fff0198                __end__ = .
+                0x000000001fff0198                end = __end__
+ *(.heap*)
+ .heap          0x000000001fff0198      0x400 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x000000001fff0198                __HeapBase
+                0x000000001fff0598                __HeapLimit = .
+
+.stack_dummy    0x000000001fff0198      0xc00
+ *(.stack)
+ .stack         0x000000001fff0198      0xc00 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x0000000020030000                __StackTop = (ORIGIN (RAM) + 0x3fe68)
+                0x000000002002f400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
+                0x0000000020030000                PROVIDE (__stack, __StackTop)
+                0x0000000000000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
+OUTPUT(fall2015_frdm_gpio.elf elf32-littlearm)
+
+.debug_info     0x0000000000000000      0x15f
+ .debug_info    0x0000000000000000      0x15f main.o
+
+.debug_abbrev   0x0000000000000000       0xf3
+ .debug_abbrev  0x0000000000000000       0xf3 main.o
+
+.debug_aranges  0x0000000000000000       0x50
+ .debug_aranges
+                0x0000000000000000       0x50 main.o
+
+.debug_ranges   0x0000000000000000       0x40
+ .debug_ranges  0x0000000000000000       0x40 main.o
+
+.debug_line     0x0000000000000000       0xe6
+ .debug_line    0x0000000000000000       0xe6 main.o
+
+.debug_str      0x0000000000000000      0x1a6
+ .debug_str     0x0000000000000000      0x1a6 main.o
+
+.comment        0x0000000000000000       0x70
+ .comment       0x0000000000000000       0x70 main.o
+                                         0x71 (size before relaxing)
+
+.ARM.attributes
+                0x0000000000000000       0x37
+ .ARM.attributes
+                0x0000000000000000       0x37 main.o
+ .ARM.attributes
+                0x0000000000000037       0x21 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+
+.debug_frame    0x0000000000000000       0xb0
+ .debug_frame   0x0000000000000000       0xb0 main.o
+
+Cross Reference Table
+
+Symbol                                            File
+ADC0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ADC1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+BusFault_Handler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CAN0_Bus_Off_IRQHandler                           mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CAN0_Error_IRQHandler                             mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CAN0_ORed_Message_buffer_IRQHandler               mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CAN0_Rx_Warning_IRQHandler                        mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CAN0_Tx_Warning_IRQHandler                        mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CAN0_Wake_Up_IRQHandler                           mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CMP0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CMP1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CMP2_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+CMT_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DAC0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DAC1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA10_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA11_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA12_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA13_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA14_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA15_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA2_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA3_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA4_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA5_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA6_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA7_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA8_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA9_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DMA_Error_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DebugMon_Handler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+DefaultISR                                        mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+Default_Handler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ENET_1588_Timer_IRQHandler                        mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ENET_Error_IRQHandler                             mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ENET_Receive_IRQHandler                           mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ENET_Transmit_IRQHandler                          mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+FTFE_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+FTM0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+FTM1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+FTM2_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+FTM3_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+HardFault_Handler                                 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+I2C0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+I2C1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+I2C2_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+I2S0_Rx_IRQHandler                                mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+I2S0_Tx_IRQHandler                                mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+LLW_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+LPTimer_IRQHandler                                mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+LVD_LVW_IRQHandler                                mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+MCG_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+MCM_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+MemManage_Handler                                 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+NMI_Handler                                       mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PDB0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PIT0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PIT1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PIT2_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PIT3_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PORTA_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PORTB_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PORTC_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PORTD_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PORTE_IRQHandler                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+PendSV_Handler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+RNG_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+RTC_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+RTC_Seconds_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+Read_Collision_IRQHandler                         mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+Reserved71_IRQHandler                             mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+Reset_Handler                                     mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SDHC_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SPI0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SPI1_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SPI2_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SVC_Handler                                       mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SWI_IRQHandler                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SysTick_Handler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+SystemInit                                        main.o
+                                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART0_ERR_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART0_LON_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART0_RX_TX_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART1_ERR_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART1_RX_TX_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART2_ERR_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART2_RX_TX_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART3_ERR_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART3_RX_TX_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART4_ERR_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART4_RX_TX_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART5_ERR_IRQHandler                              mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UART5_RX_TX_IRQHandler                            mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+USB0_IRQHandler                                   mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+USBDCD_IRQHandler                                 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+UsageFault_Handler                                mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+Watchdog_IRQHandler                               mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__HeapBase                                        mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__HeapLimit                                       mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__StackLimit                                      mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__StackTop                                        mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__data_end__                                      mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__data_start__                                    mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__etext                                           mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+__isr_vector                                      mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+_start                                            main.o
+                                                  mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+clr_led                                           main.o
+main                                              main.o
+mysleep                                           main.o
+set_output                                        main.o
+turn_on_led1                                      main.o
