@@ -21,9 +21,16 @@ e4357: Embedded Firmware Essentials
 - Cloud 9 IDE
 -------------
   * create C++ workspace in Cloud 9 IDE:  https://c9.io
+
   * install arm gcc compiler
+
     lsb_release  -a
+
     sudo apt-get install gcc-arm-none-eabi
+
   * clone this homework template
+
      mkdir mbed
+
      git clone https://github.com/Shengliang/e4357.git
+
