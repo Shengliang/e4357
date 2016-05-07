@@ -1,161 +1,161 @@
 
 Discarded input sections
 
- .text          0x0000000000000000        0x0 main.o
- .data          0x0000000000000000        0x0 main.o
- .bss           0x0000000000000000        0x0 main.o
- .data          0x0000000000000000        0x0 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
- .bss           0x0000000000000000        0x0 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ .text          0x00000000        0x0 main.o
+ .data          0x00000000        0x0 main.o
+ .bss           0x00000000        0x0 main.o
+ .data          0x00000000        0x0 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+ .bss           0x00000000        0x0 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
 
 Memory Configuration
 
 Name             Origin             Length             Attributes
-VECTORS          0x0000000000000000 0x0000000000000400 xr
-FLASH_PROTECTION 0x0000000000000400 0x0000000000000010 xr
-FLASH            0x0000000000000410 0x00000000000ffbf0 xr
-RAM              0x000000001fff0198 0x000000000003fe68 xrw
-*default*        0x0000000000000000 0xffffffffffffffff
+VECTORS          0x00000000         0x00000400         xr
+FLASH_PROTECTION 0x00000400         0x00000010         xr
+FLASH            0x00000410         0x000ffbf0         xr
+RAM              0x1fff0198         0x0003fe68         xrw
+*default*        0x00000000         0xffffffff
 
 Linker script and memory map
 
 LOAD main.o
 LOAD mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
 
-.isr_vector     0x0000000000000000      0x1f0
-                0x0000000000000000                __vector_table = .
+.isr_vector     0x00000000      0x1f0
+                0x00000000                __vector_table = .
  *(.vector_table)
- .vector_table  0x0000000000000000      0x198 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
-                0x0000000000000000                __isr_vector
+ .vector_table  0x00000000      0x198 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x00000000                __isr_vector
  *(.text.Reset_Handler)
  .text.Reset_Handler
-                0x0000000000000198       0x58 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
-                0x0000000000000198                Reset_Handler
+                0x00000198       0x58 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x00000198                Reset_Handler
  *(.text.System_Init)
-                0x00000000000001f0                . = ALIGN (0x4)
+                0x000001f0                . = ALIGN (0x4)
 
-.flash_protect  0x0000000000000400       0x10
+.flash_protect  0x00000400       0x10
  *(.kinetis_flash_config_field)
  .kinetis_flash_config_field
-                0x0000000000000400       0x10 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
-                0x0000000000000410                . = ALIGN (0x4)
+                0x00000400       0x10 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x00000410                . = ALIGN (0x4)
 
-.text           0x0000000000000410       0xf0
+.text           0x00000410       0xf8
  *(.text*)
  .text.set_output
-                0x0000000000000410       0x40 main.o
-                0x0000000000000410                set_output
+                0x00000410       0x44 main.o
+                0x00000410                set_output
  .text.turn_on_led1
-                0x0000000000000450       0x18 main.o
-                0x0000000000000450                turn_on_led1
- .text.clr_led  0x0000000000000468       0x18 main.o
-                0x0000000000000468                clr_led
+                0x00000454       0x18 main.o
+                0x00000454                turn_on_led1
+ .text.clr_led  0x0000046c       0x18 main.o
+                0x0000046c                clr_led
  .text.SystemInit
-                0x0000000000000480        0x4 main.o
-                0x0000000000000480                SystemInit
- .text._start   0x0000000000000484        0x8 main.o
-                0x0000000000000484                _start
- .text.mysleep  0x000000000000048c       0x40 main.o
-                0x000000000000048c                mysleep
- .text.main     0x00000000000004cc       0x20 main.o
-                0x00000000000004cc                main
- .text          0x00000000000004ec       0x14 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
-                0x00000000000004ec                NMI_Handler
-                0x00000000000004ee                HardFault_Handler
-                0x00000000000004f0                MemManage_Handler
-                0x00000000000004f2                BusFault_Handler
-                0x00000000000004f4                UsageFault_Handler
-                0x00000000000004f6                SVC_Handler
-                0x00000000000004f8                DebugMon_Handler
-                0x00000000000004fa                PendSV_Handler
-                0x00000000000004fc                SysTick_Handler
-                0x00000000000004fe                CAN0_ORed_Message_buffer_IRQHandler
-                0x00000000000004fe                Watchdog_IRQHandler
-                0x00000000000004fe                CMP2_IRQHandler
-                0x00000000000004fe                ENET_Receive_IRQHandler
-                0x00000000000004fe                ENET_1588_Timer_IRQHandler
-                0x00000000000004fe                UART2_RX_TX_IRQHandler
-                0x00000000000004fe                SWI_IRQHandler
-                0x00000000000004fe                ADC0_IRQHandler
-                0x00000000000004fe                I2S0_Tx_IRQHandler
-                0x00000000000004fe                CMT_IRQHandler
-                0x00000000000004fe                UART4_RX_TX_IRQHandler
-                0x00000000000004fe                SPI1_IRQHandler
-                0x00000000000004fe                DefaultISR
-                0x00000000000004fe                DMA9_IRQHandler
-                0x00000000000004fe                DMA14_IRQHandler
-                0x00000000000004fe                CMP1_IRQHandler
-                0x00000000000004fe                Reserved71_IRQHandler
-                0x00000000000004fe                PORTD_IRQHandler
-                0x00000000000004fe                PORTB_IRQHandler
-                0x00000000000004fe                UART4_ERR_IRQHandler
-                0x00000000000004fe                ADC1_IRQHandler
-                0x00000000000004fe                I2C2_IRQHandler
-                0x00000000000004fe                PIT2_IRQHandler
-                0x00000000000004fe                I2S0_Rx_IRQHandler
-                0x00000000000004fe                LPTimer_IRQHandler
-                0x00000000000004fe                DMA5_IRQHandler
-                0x00000000000004fe                RTC_IRQHandler
-                0x00000000000004fe                PDB0_IRQHandler
-                0x00000000000004fe                FTM1_IRQHandler
-                0x00000000000004fe                UART5_RX_TX_IRQHandler
-                0x00000000000004fe                UART3_ERR_IRQHandler
-                0x00000000000004fe                PIT3_IRQHandler
-                0x00000000000004fe                SDHC_IRQHandler
-                0x00000000000004fe                RTC_Seconds_IRQHandler
-                0x00000000000004fe                MCG_IRQHandler
-                0x00000000000004fe                FTFE_IRQHandler
-                0x00000000000004fe                UART2_ERR_IRQHandler
-                0x00000000000004fe                DMA11_IRQHandler
-                0x00000000000004fe                UART5_ERR_IRQHandler
-                0x00000000000004fe                Read_Collision_IRQHandler
-                0x00000000000004fe                Default_Handler
-                0x00000000000004fe                DMA7_IRQHandler
-                0x00000000000004fe                ENET_Transmit_IRQHandler
-                0x00000000000004fe                USBDCD_IRQHandler
-                0x00000000000004fe                USB0_IRQHandler
-                0x00000000000004fe                LLW_IRQHandler
-                0x00000000000004fe                SPI2_IRQHandler
-                0x00000000000004fe                DMA13_IRQHandler
-                0x00000000000004fe                DMA3_IRQHandler
-                0x00000000000004fe                UART0_LON_IRQHandler
-                0x00000000000004fe                RNG_IRQHandler
-                0x00000000000004fe                DMA0_IRQHandler
-                0x00000000000004fe                DMA15_IRQHandler
-                0x00000000000004fe                DAC0_IRQHandler
-                0x00000000000004fe                CAN0_Error_IRQHandler
-                0x00000000000004fe                DMA4_IRQHandler
-                0x00000000000004fe                PIT1_IRQHandler
-                0x00000000000004fe                UART0_ERR_IRQHandler
-                0x00000000000004fe                DMA_Error_IRQHandler
-                0x00000000000004fe                LVD_LVW_IRQHandler
-                0x00000000000004fe                SPI0_IRQHandler
-                0x00000000000004fe                FTM0_IRQHandler
-                0x00000000000004fe                PORTA_IRQHandler
-                0x00000000000004fe                DAC1_IRQHandler
-                0x00000000000004fe                MCM_IRQHandler
-                0x00000000000004fe                DMA12_IRQHandler
-                0x00000000000004fe                CAN0_Bus_Off_IRQHandler
-                0x00000000000004fe                FTM3_IRQHandler
-                0x00000000000004fe                PORTE_IRQHandler
-                0x00000000000004fe                FTM2_IRQHandler
-                0x00000000000004fe                DMA8_IRQHandler
-                0x00000000000004fe                DMA10_IRQHandler
-                0x00000000000004fe                CAN0_Wake_Up_IRQHandler
-                0x00000000000004fe                UART1_ERR_IRQHandler
-                0x00000000000004fe                UART1_RX_TX_IRQHandler
-                0x00000000000004fe                CMP0_IRQHandler
-                0x00000000000004fe                PORTC_IRQHandler
-                0x00000000000004fe                DMA6_IRQHandler
-                0x00000000000004fe                CAN0_Rx_Warning_IRQHandler
-                0x00000000000004fe                DMA1_IRQHandler
-                0x00000000000004fe                I2C0_IRQHandler
-                0x00000000000004fe                UART3_RX_TX_IRQHandler
-                0x00000000000004fe                UART0_RX_TX_IRQHandler
-                0x00000000000004fe                I2C1_IRQHandler
-                0x00000000000004fe                DMA2_IRQHandler
-                0x00000000000004fe                ENET_Error_IRQHandler
-                0x00000000000004fe                CAN0_Tx_Warning_IRQHandler
-                0x00000000000004fe                PIT0_IRQHandler
+                0x00000484        0x4 main.o
+                0x00000484                SystemInit
+ .text._start   0x00000488        0xc main.o
+                0x00000488                _start
+ .text.mysleep  0x00000494       0x40 main.o
+                0x00000494                mysleep
+ .text.main     0x000004d4       0x20 main.o
+                0x000004d4                main
+ .text          0x000004f4       0x14 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x000004f4                NMI_Handler
+                0x000004f6                HardFault_Handler
+                0x000004f8                MemManage_Handler
+                0x000004fa                BusFault_Handler
+                0x000004fc                UsageFault_Handler
+                0x000004fe                SVC_Handler
+                0x00000500                DebugMon_Handler
+                0x00000502                PendSV_Handler
+                0x00000504                SysTick_Handler
+                0x00000506                CAN0_Rx_Warning_IRQHandler
+                0x00000506                I2C0_IRQHandler
+                0x00000506                UART3_RX_TX_IRQHandler
+                0x00000506                UART0_RX_TX_IRQHandler
+                0x00000506                I2C1_IRQHandler
+                0x00000506                DMA2_IRQHandler
+                0x00000506                ENET_Error_IRQHandler
+                0x00000506                CAN0_Tx_Warning_IRQHandler
+                0x00000506                PIT0_IRQHandler
+                0x00000506                CAN0_ORed_Message_buffer_IRQHandler
+                0x00000506                Watchdog_IRQHandler
+                0x00000506                CMP2_IRQHandler
+                0x00000506                ENET_Receive_IRQHandler
+                0x00000506                ENET_1588_Timer_IRQHandler
+                0x00000506                UART2_RX_TX_IRQHandler
+                0x00000506                SWI_IRQHandler
+                0x00000506                ADC0_IRQHandler
+                0x00000506                I2S0_Tx_IRQHandler
+                0x00000506                CMT_IRQHandler
+                0x00000506                UART4_RX_TX_IRQHandler
+                0x00000506                SPI1_IRQHandler
+                0x00000506                DefaultISR
+                0x00000506                DMA9_IRQHandler
+                0x00000506                DMA14_IRQHandler
+                0x00000506                CMP1_IRQHandler
+                0x00000506                Reserved71_IRQHandler
+                0x00000506                PORTD_IRQHandler
+                0x00000506                PORTB_IRQHandler
+                0x00000506                UART4_ERR_IRQHandler
+                0x00000506                ADC1_IRQHandler
+                0x00000506                I2C2_IRQHandler
+                0x00000506                PIT2_IRQHandler
+                0x00000506                I2S0_Rx_IRQHandler
+                0x00000506                LPTimer_IRQHandler
+                0x00000506                DMA5_IRQHandler
+                0x00000506                RTC_IRQHandler
+                0x00000506                PDB0_IRQHandler
+                0x00000506                FTM1_IRQHandler
+                0x00000506                UART5_RX_TX_IRQHandler
+                0x00000506                UART3_ERR_IRQHandler
+                0x00000506                PIT3_IRQHandler
+                0x00000506                SDHC_IRQHandler
+                0x00000506                RTC_Seconds_IRQHandler
+                0x00000506                MCG_IRQHandler
+                0x00000506                FTFE_IRQHandler
+                0x00000506                UART2_ERR_IRQHandler
+                0x00000506                DMA11_IRQHandler
+                0x00000506                UART5_ERR_IRQHandler
+                0x00000506                Read_Collision_IRQHandler
+                0x00000506                Default_Handler
+                0x00000506                DMA7_IRQHandler
+                0x00000506                ENET_Transmit_IRQHandler
+                0x00000506                USBDCD_IRQHandler
+                0x00000506                USB0_IRQHandler
+                0x00000506                LLW_IRQHandler
+                0x00000506                SPI2_IRQHandler
+                0x00000506                DMA13_IRQHandler
+                0x00000506                DMA3_IRQHandler
+                0x00000506                UART0_LON_IRQHandler
+                0x00000506                RNG_IRQHandler
+                0x00000506                DMA0_IRQHandler
+                0x00000506                DMA15_IRQHandler
+                0x00000506                DAC0_IRQHandler
+                0x00000506                CAN0_Error_IRQHandler
+                0x00000506                DMA4_IRQHandler
+                0x00000506                PIT1_IRQHandler
+                0x00000506                UART0_ERR_IRQHandler
+                0x00000506                DMA_Error_IRQHandler
+                0x00000506                LVD_LVW_IRQHandler
+                0x00000506                SPI0_IRQHandler
+                0x00000506                FTM0_IRQHandler
+                0x00000506                PORTA_IRQHandler
+                0x00000506                DAC1_IRQHandler
+                0x00000506                MCM_IRQHandler
+                0x00000506                DMA12_IRQHandler
+                0x00000506                CAN0_Bus_Off_IRQHandler
+                0x00000506                FTM3_IRQHandler
+                0x00000506                PORTE_IRQHandler
+                0x00000506                FTM2_IRQHandler
+                0x00000506                DMA8_IRQHandler
+                0x00000506                DMA10_IRQHandler
+                0x00000506                CAN0_Wake_Up_IRQHandler
+                0x00000506                UART1_ERR_IRQHandler
+                0x00000506                UART1_RX_TX_IRQHandler
+                0x00000506                CMP0_IRQHandler
+                0x00000506                PORTC_IRQHandler
+                0x00000506                DMA6_IRQHandler
+                0x00000506                DMA1_IRQHandler
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -171,112 +171,112 @@ LOAD mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
  *(.rodata*)
  *(.eh_frame*)
 
-.glue_7         0x0000000000000500        0x0
- .glue_7        0x0000000000000000        0x0 linker stubs
+.glue_7         0x00000508        0x0
+ .glue_7        0x00000508        0x0 linker stubs
 
-.glue_7t        0x0000000000000500        0x0
- .glue_7t       0x0000000000000000        0x0 linker stubs
+.glue_7t        0x00000508        0x0
+ .glue_7t       0x00000508        0x0 linker stubs
 
-.vfp11_veneer   0x0000000000000500        0x0
- .vfp11_veneer  0x0000000000000000        0x0 linker stubs
+.vfp11_veneer   0x00000508        0x0
+ .vfp11_veneer  0x00000508        0x0 linker stubs
 
-.v4_bx          0x0000000000000500        0x0
- .v4_bx         0x0000000000000000        0x0 linker stubs
+.v4_bx          0x00000508        0x0
+ .v4_bx         0x00000508        0x0 linker stubs
 
-.iplt           0x0000000000000500        0x0
- .iplt          0x0000000000000000        0x0 main.o
+.iplt           0x00000508        0x0
+ .iplt          0x00000508        0x0 main.o
 
-.rel.dyn        0x0000000000000500        0x0
- .rel.iplt      0x0000000000000000        0x0 main.o
+.rel.dyn        0x00000508        0x0
+ .rel.iplt      0x00000508        0x0 main.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0000000000000500                __exidx_start = .
+                0x00000508                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x0000000000000500                __exidx_end = .
-                0x0000000000000500                __etext = .
+                0x00000508                __exidx_end = .
+                0x00000508                __etext = .
 
-.data           0x000000001fff0198        0x0 load address 0x0000000000000500
-                0x000000001fff0198                __data_start__ = .
+.data           0x1fff0198        0x0 load address 0x00000508
+                0x1fff0198                __data_start__ = .
  *(vtable)
  *(.data*)
-                0x000000001fff0198                . = ALIGN (0x4)
-                0x000000001fff0198                PROVIDE (__preinit_array_start, .)
+                0x1fff0198                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__preinit_array_start, .)
  *(.preinit_array)
-                0x000000001fff0198                PROVIDE (__preinit_array_end, .)
-                0x000000001fff0198                . = ALIGN (0x4)
-                0x000000001fff0198                PROVIDE (__init_array_start, .)
+                [!provide]                PROVIDE (__preinit_array_end, .)
+                0x1fff0198                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*))
  *(.init_array)
-                0x000000001fff0198                PROVIDE (__init_array_end, .)
-                0x000000001fff0198                . = ALIGN (0x4)
-                0x000000001fff0198                PROVIDE (__fini_array_start, .)
+                [!provide]                PROVIDE (__init_array_end, .)
+                0x1fff0198                . = ALIGN (0x4)
+                [!provide]                PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*))
  *(.fini_array)
-                0x000000001fff0198                PROVIDE (__fini_array_end, .)
-                0x000000001fff0198                . = ALIGN (0x4)
-                0x000000001fff0198                __data_end__ = .
+                [!provide]                PROVIDE (__fini_array_end, .)
+                0x1fff0198                . = ALIGN (0x4)
+                0x1fff0198                __data_end__ = .
 
-.igot.plt       0x000000001fff0198        0x0
- .igot.plt      0x0000000000000000        0x0 main.o
+.igot.plt       0x1fff0198        0x0
+ .igot.plt      0x1fff0198        0x0 main.o
 
-.bss            0x000000001fff0198        0x0
-                0x000000001fff0198                __bss_start__ = .
+.bss            0x1fff0198        0x0
+                0x1fff0198                __bss_start__ = .
  *(.bss*)
  *(COMMON)
-                0x000000001fff0198                __bss_end__ = .
+                0x1fff0198                __bss_end__ = .
 
-.heap           0x000000001fff0198      0x400
-                0x000000001fff0198                __end__ = .
-                0x000000001fff0198                end = __end__
+.heap           0x1fff0198      0x400
+                0x1fff0198                __end__ = .
+                0x1fff0198                end = __end__
  *(.heap*)
- .heap          0x000000001fff0198      0x400 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
-                0x000000001fff0198                __HeapBase
-                0x000000001fff0598                __HeapLimit = .
+ .heap          0x1fff0198      0x400 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x1fff0198                __HeapBase
+                0x1fff0598                __HeapLimit = .
 
-.stack_dummy    0x000000001fff0198      0xc00
+.stack_dummy    0x1fff0198      0xc00
  *(.stack)
- .stack         0x000000001fff0198      0xc00 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
-                0x0000000020030000                __StackTop = (ORIGIN (RAM) + 0x3fe68)
-                0x000000002002f400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
-                0x0000000020030000                PROVIDE (__stack, __StackTop)
-                0x0000000000000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
+ .stack         0x1fff0198      0xc00 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x20030000                __StackTop = (ORIGIN (RAM) + LENGTH (RAM))
+                0x2002f400                __StackLimit = (__StackTop - SIZEOF (.stack_dummy))
+                [!provide]                PROVIDE (__stack, __StackTop)
+                0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region RAM overflowed with stack)
 OUTPUT(fall2015_frdm_gpio.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000      0x15f
- .debug_info    0x0000000000000000      0x15f main.o
+.debug_info     0x00000000      0x137
+ .debug_info    0x00000000      0x137 main.o
 
-.debug_abbrev   0x0000000000000000       0xf3
- .debug_abbrev  0x0000000000000000       0xf3 main.o
+.debug_abbrev   0x00000000       0xea
+ .debug_abbrev  0x00000000       0xea main.o
 
-.debug_aranges  0x0000000000000000       0x50
+.debug_aranges  0x00000000       0x50
  .debug_aranges
-                0x0000000000000000       0x50 main.o
+                0x00000000       0x50 main.o
 
-.debug_ranges   0x0000000000000000       0x40
- .debug_ranges  0x0000000000000000       0x40 main.o
+.debug_ranges   0x00000000       0x40
+ .debug_ranges  0x00000000       0x40 main.o
 
-.debug_line     0x0000000000000000       0xe6
- .debug_line    0x0000000000000000       0xe6 main.o
+.debug_line     0x00000000       0xe4
+ .debug_line    0x00000000       0xe4 main.o
 
-.debug_str      0x0000000000000000      0x1a6
- .debug_str     0x0000000000000000      0x1a6 main.o
+.debug_str      0x00000000      0x1a3
+ .debug_str     0x00000000      0x1a3 main.o
 
-.comment        0x0000000000000000       0x70
- .comment       0x0000000000000000       0x70 main.o
-                                         0x71 (size before relaxing)
+.comment        0x00000000       0x6e
+ .comment       0x00000000       0x6e main.o
+                                 0x6f (size before relaxing)
 
 .ARM.attributes
-                0x0000000000000000       0x37
+                0x00000000       0x37
  .ARM.attributes
-                0x0000000000000000       0x37 main.o
+                0x00000000       0x37 main.o
  .ARM.attributes
-                0x0000000000000037       0x21 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
+                0x00000037       0x21 mbed/TARGET_K64F/TOOLCHAIN_GCC_ARM/startup_MK64F12.o
 
-.debug_frame    0x0000000000000000       0xb0
- .debug_frame   0x0000000000000000       0xb0 main.o
+.debug_frame    0x00000000       0xb0
+ .debug_frame   0x00000000       0xb0 main.o
 
 Cross Reference Table
 
