@@ -106,13 +106,13 @@ void set_output(void) {
     *pdirection = 1U << PIN_LED1;
 }
 
-void turn_on_led1(void) {
+inline void turn_on_led1(void) {
    volatile unsigned int * pclear =
             (volatile unsigned int*) (PTB_BASE+CLEAR_OFFSET);
    *pclear = 1U << PIN_LED1;
 }
 
-void clr_led(void) {
+inline void clr_led(void) {
   volatile unsigned int * pset =
      (volatile unsigned int*) (PTB_BASE+SET_OFFSET);
   *pset = 1U << PIN_LED1;
